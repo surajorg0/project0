@@ -1,0 +1,22 @@
+.video-container {
+  width: 100%;
+  margin-bottom: 15px;
+  
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: none; // Remove any transitions that might cause shrinking
+  }
+  
+  &.playing {
+    // Ensure playing videos maintain the same size
+    width: 100%;
+    
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+} 

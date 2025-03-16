@@ -1,0 +1,25 @@
+.video-container {
+  width: 100%;
+  margin-bottom: 15px;
+  
+  video {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
+.video-info {
+  padding: 16px;
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    line-height: 1.5;
+  }
+} 

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { NativeBiometric } from 'capacitor-native-biometric';
+import { Storage } from '@ionic/storage-angular';
+import { App } from '@capacitor/app';
+import { MongoDBService } from './mongodb.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +15,21 @@ export class AuthService {
   private phoneNumber: string | null = null;
   private fingerprintEnabled = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private storage: Storage,
+    private mongoDBService: MongoDBService
+  ) {
+    this.initStorage();
     // Check if fingerprint is enabled in local storage
     const fingerprintEnabled = localStorage.getItem('fingerprintEnabled');
     if (fingerprintEnabled === 'true') {
       this.fingerprintEnabled.next(true);
     }
+  }
+
+  async initStorage() {
+    await this.storage.create();
   }
 
   // Check if user is authenticated
@@ -30,10 +43,23 @@ export class AuthService {
   }
 
   // Login with phone number
-  loginWithPhone(phoneNumber: string) {
-    console.log('Auth service: loginWithPhone called with', phoneNumber);
+  async login(phoneNumber: string) {
+    console.log('Auth service: login called with', phoneNumber);
     this.phoneNumber = phoneNumber;
     // In a real app, you would send an OTP to the phone number
+    
+    // Register or update user in MongoDB
+    this.mongoDBService.registerUser(phoneNumber).subscribe(
+      (response) => {
+        console.log('User registered in MongoDB:', response);
+        // Store user ID from MongoDB
+        this.storage.set('userId', response.userId);
+      },
+      (error) => {
+        console.error('Error registering user in MongoDB:', error);
+      }
+    );
+    
     return true;
   }
 
@@ -126,8 +152,21 @@ export class AuthService {
   }
 
   // Logout
-  logout() {
-    this.isAuthenticated.next(false);
-    this.router.navigate(['/login']);
+  async logout() {
+    // Clear authentication data
+    await this.storage.remove('isAuthenticated');
+    await this.storage.remove('phoneNumber');
+    
+    // Navigate to login page
+    this.router.navigate(['/login'], { replaceUrl: true });
+  }
+
+  // Add method to handle app state
+  handleAppState() {
+    App.addListener('appStateChange', ({ isActive }) => {
+      // Don't logout when app goes to background
+      console.log('App state changed. Is active:', isActive);
+      // We're not doing anything here to prevent logout
+    });
   }
 }

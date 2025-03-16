@@ -1,0 +1,27 @@
+.theme-toggle {
+  ion-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .rotate-icon {
+    &:active {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Theme specific styles
+:host {
+  --ion-background-color: var(--ion-color-light);
+  --ion-text-color: var(--ion-color-dark);
+}
+
+:host-context(.dark) {
+  --ion-background-color: var(--ion-color-dark);
+  --ion-text-color: var(--ion-color-light);
+  
+  .theme-toggle ion-icon {
+    color: white;
+  }
+}

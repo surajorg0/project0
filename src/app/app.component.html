@@ -1,3 +1,18 @@
 <ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Car Gallery</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleTheme()" class="theme-toggle">
+          <ion-icon [name]="isDarkMode ? 'moon' : 'sunny'" 
+                   [class.rotate-icon]="true"></ion-icon>
+        </ion-button>
+        <ion-button routerLink="/profile">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

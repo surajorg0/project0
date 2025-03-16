@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/car-video"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ video?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="video-container">
+    <video controls autoplay>
+      <source [src]="video?.url" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <div class="video-info">
+    <h2>{{ video?.title }}</h2>
+    <p>{{ video?.description }}</p>
+  </div>
+</ion-content> 
