@@ -183,10 +183,10 @@ export class LoginPage implements OnInit {
         
         // Navigate after animation completes
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], { replaceUrl: true });
         }, 800);
       } else {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home'], { replaceUrl: true });
       }
     } else {
       this.presentToast('Invalid OTP. For this demo, use "12345"');
@@ -242,10 +242,10 @@ export class LoginPage implements OnInit {
         
         // Navigate after animation completes
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], { replaceUrl: true });
         }, 800);
       } else {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home'], { replaceUrl: true });
       }
     } catch (error) {
       console.error('Error with fingerprint authentication:', error);

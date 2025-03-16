@@ -1,36 +1,94 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MongoDBService {
-  private apiUrl = environment.apiUrl;
+  private localStoragePrefix = 'mock_mongodb_';
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   // User registration
   registerUser(phoneNumber: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users/register`, { phoneNumber });
+    console.log('Mock MongoDB: Registering user with phone number', phoneNumber);
+    
+    // Generate a random user ID
+    const userId = 'user_' + Math.random().toString(36).substring(2, 15);
+    
+    // Store user data in local storage
+    const userData = {
+      userId,
+      phoneNumber,
+      createdAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem(this.localStoragePrefix + userId, JSON.stringify(userData));
+    
+    return of({ userId, success: true });
   }
 
   // Update user profile
   updateUserProfile(userId: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/users/${userId}`, data);
+    console.log('Mock MongoDB: Updating user profile for', userId, data);
+    
+    // Get existing user data
+    const userDataStr = localStorage.getItem(this.localStoragePrefix + userId);
+    if (!userDataStr) {
+      return of({ success: false, message: 'User not found' });
+    }
+    
+    // Update user data
+    const userData = JSON.parse(userDataStr);
+    const updatedData = { ...userData, ...data, updatedAt: new Date().toISOString() };
+    
+    // Save updated data
+    localStorage.setItem(this.localStoragePrefix + userId, JSON.stringify(updatedData));
+    
+    return of({ success: true, data: updatedData });
   }
 
   // Get user profile
   getUserProfile(userId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users/${userId}`);
+    console.log('Mock MongoDB: Getting user profile for', userId);
+    
+    // Get user data from local storage
+    const userDataStr = localStorage.getItem(this.localStoragePrefix + userId);
+    if (!userDataStr) {
+      return of({ success: false, message: 'User not found' });
+    }
+    
+    return of({ success: true, data: JSON.parse(userDataStr) });
   }
 
   // Upload profile picture
   uploadProfilePicture(userId: string, file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('profilePicture', file);
+    console.log('Mock MongoDB: Uploading profile picture for', userId);
     
-    return this.http.post(`${this.apiUrl}/users/${userId}/upload-picture`, formData);
+    // In a real implementation, we would upload the file to a server
+    // For this mock, we'll just pretend it was successful
+    
+    // Get existing user data
+    const userDataStr = localStorage.getItem(this.localStoragePrefix + userId);
+    if (!userDataStr) {
+      return of({ success: false, message: 'User not found' });
+    }
+    
+    // Update user data with profile picture info
+    const userData = JSON.parse(userDataStr);
+    const updatedData = { 
+      ...userData, 
+      profilePicture: 'mock_profile_picture.jpg',
+      updatedAt: new Date().toISOString() 
+    };
+    
+    // Save updated data
+    localStorage.setItem(this.localStoragePrefix + userId, JSON.stringify(updatedData));
+    
+    return of({ 
+      success: true, 
+      message: 'Profile picture uploaded successfully',
+      profilePictureUrl: 'mock_profile_picture.jpg'
+    });
   }
 } 

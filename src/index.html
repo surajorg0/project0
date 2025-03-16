@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Suraj</title>
+  <title>Car Gallery App</title>
 
   <base href="/" />
 
@@ -18,10 +18,67 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <style>
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f5f8;
+      font-family: Arial, sans-serif;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: #3880ff;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      font-size: 18px;
+      color: #333;
+    }
+    
+    .app-loaded .loading-container {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="loading-container" id="loading-container">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading Car Gallery App...</div>
+  </div>
+  
   <app-root></app-root>
+  
+  <script>
+    // Hide loading screen when app is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM content loaded');
+    });
+    
+    window.addEventListener('load', function() {
+      console.log('Window loaded');
+      setTimeout(function() {
+        document.body.classList.add('app-loaded');
+      }, 1000);
+    });
+    
+    // Debug Angular bootstrap
+    console.log('Index.html script executed');
+  </script>
 </body>
 
 </html>

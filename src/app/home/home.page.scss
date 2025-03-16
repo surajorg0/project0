@@ -49,28 +49,59 @@ ion-content {
   background-image: radial-gradient(white 1px, transparent 1px);
   background-size: 30px 30px;
   opacity: 0.3;
+  animation: drift 100s linear infinite;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
 }
 
 .home-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 10px 0;
+  overflow-y: auto;
   height: 100%;
 }
 
 ion-card {
-  width: 90%;
-  max-width: 500px;
+  width: 95%;
+  max-width: 600px;
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.welcome-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+}
+
+.featured-card, .actions-card, .stats-card {
+  background: rgba(255, 255, 255, 0.85);
 }
 
 ion-card-title {
   color: #6A5ACD;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  
+  ion-icon {
+    margin-right: 8px;
+    font-size: 24px;
+  }
 }
 
 ion-card-content {
@@ -81,14 +112,34 @@ ion-card-content {
   }
 }
 
+.welcome-text {
+  font-size: 18px !important;
+  font-weight: 500;
+  color: #333 !important;
+  margin-bottom: 5px !important;
+}
+
+.welcome-subtitle {
+  font-size: 16px !important;
+  color: #666 !important;
+}
+
 .button-container {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 ion-button {
   --background: #6A5ACD;
   --background-hover: #9370DB;
-  margin-top: 15px;
+  margin-top: 10px;
+  --border-radius: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .logo-container {
@@ -132,6 +183,76 @@ ion-button {
   }
 }
 
+// Featured cars styles
+.featured-cars {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 15px;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #6A5ACD;
+    border-radius: 4px;
+  }
+}
+
+.featured-car {
+  min-width: 150px;
+  text-align: center;
+}
+
+.car-image-container {
+  width: 150px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.car-name {
+  margin-top: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+// Stats styles
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 10px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6A5ACD;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+}
+
 // Animation classes
 .fade-in {
   animation: fadeIn 0.5s ease-in;
@@ -153,6 +274,20 @@ ion-button {
 
 @media (min-width: 768px) {
   ion-card {
-    width: 70%;
+    width: 80%;
+  }
+  
+  .featured-cars {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-container {
+    flex-direction: column;
+  }
+  
+  .stat-item {
+    padding: 5px;
   }
 }

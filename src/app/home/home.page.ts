@@ -21,7 +21,18 @@ import {
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { addIcons } from 'ionicons';
-import { folderOpen, logOut, images, sunny, videocam, person } from 'ionicons/icons';
+import { 
+  folderOpen, 
+  logOut, 
+  images, 
+  sunny, 
+  videocam, 
+  person, 
+  star, 
+  flash, 
+  analytics, 
+  menu 
+} from 'ionicons/icons';
 import { App } from '@capacitor/app';
 import { Platform } from '@ionic/angular';
 
@@ -54,6 +65,9 @@ export class HomePage implements OnInit {
   profileImage: string | null = null;
   currentEmoji: string = '😊';
   emojis: string[] = ['😊', '😎', '🚗', '🏎️', '🌞', '🌟', '🔥', '👍', '🎉', '🌈'];
+  carCount: string = '0';
+  videoCount: string = '0';
+  folderCount: string = '0';
 
   constructor(
     private router: Router,
@@ -62,7 +76,18 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private animationCtrl: AnimationController
   ) {
-    addIcons({ folderOpen, logOut, images, sunny, videocam, person });
+    addIcons({ 
+      folderOpen, 
+      logOut, 
+      images, 
+      sunny, 
+      videocam, 
+      person, 
+      star, 
+      flash, 
+      analytics,
+      menu
+    });
     this.setupBackButtonHandler();
   }
 
@@ -71,6 +96,36 @@ export class HomePage implements OnInit {
     this.setGreeting();
     this.setRandomEmoji();
     this.animateElements();
+    
+    // Create sample data in localStorage if it doesn't exist
+    this.initializeLocalStorage();
+  }
+
+  // Initialize sample data in localStorage
+  initializeLocalStorage() {
+    if (!localStorage.getItem('userName')) {
+      localStorage.setItem('userName', 'Car Enthusiast');
+    }
+    
+    // Set default profile image if none exists
+    if (!localStorage.getItem('profileImage')) {
+      localStorage.setItem('profileImage', 'https://ionicframework.com/docs/img/demos/avatar.svg');
+    }
+    
+    // Initialize car count if it doesn't exist
+    if (!localStorage.getItem('carCount')) {
+      localStorage.setItem('carCount', '24');
+    }
+    
+    // Initialize video count if it doesn't exist
+    if (!localStorage.getItem('videoCount')) {
+      localStorage.setItem('videoCount', '8');
+    }
+    
+    // Initialize folder count if it doesn't exist
+    if (!localStorage.getItem('folderCount')) {
+      localStorage.setItem('folderCount', '5');
+    }
   }
 
   // Load user profile data
@@ -86,6 +141,11 @@ export class HomePage implements OnInit {
     if (savedImage) {
       this.profileImage = savedImage;
     }
+    
+    // Load counts from localStorage
+    this.carCount = localStorage.getItem('carCount') || '0';
+    this.videoCount = localStorage.getItem('videoCount') || '0';
+    this.folderCount = localStorage.getItem('folderCount') || '0';
   }
 
   // Set random emoji
@@ -112,6 +172,22 @@ export class HomePage implements OnInit {
         
         animation.play();
       }
+      
+      // Animate cards
+      const cards = document.querySelectorAll('ion-card') as NodeListOf<HTMLElement>;
+      cards.forEach((card, index) => {
+        const animation = this.animationCtrl.create()
+          .addElement(card)
+          .duration(500)
+          .delay(200 * index)
+          .iterations(1)
+          .keyframes([
+            { offset: 0, transform: 'translateY(30px)', opacity: '0' },
+            { offset: 1, transform: 'translateY(0)', opacity: '1' }
+          ]);
+        
+        animation.play();
+      });
       
       // Animate buttons
       const buttons = document.querySelectorAll('ion-button') as NodeListOf<HTMLElement>;
@@ -180,7 +256,7 @@ export class HomePage implements OnInit {
     if (this.userName) {
       this.greeting = `${timeGreeting}, ${this.userName} ${this.currentEmoji}`;
     } else {
-      this.greeting = timeGreeting;
+      this.greeting = `${timeGreeting} ${this.currentEmoji}`;
     }
   }
 
@@ -206,6 +282,12 @@ export class HomePage implements OnInit {
 
   // Logout
   logout() {
-    this.router.navigate(['/login']);
+    // Clear authentication token or session
+    if (this.authService && typeof this.authService.logout === 'function') {
+      this.authService.logout();
+    }
+    
+    // Navigate to login page
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 }

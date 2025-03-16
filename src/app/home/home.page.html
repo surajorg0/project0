@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Suraj
+      Car Gallery
     </ion-title>
     <ion-buttons slot="end">
       <ion-avatar *ngIf="profileImage" class="header-avatar" (click)="goToProfile()">
@@ -9,9 +12,6 @@
       </ion-avatar>
       <ion-button *ngIf="!profileImage" (click)="goToProfile()">
         <ion-icon name="person" slot="icon-only"></ion-icon>
-      </ion-button>
-      <ion-button (click)="logout()">
-        <ion-icon name="logOut" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -23,7 +23,8 @@
   </div>
 
   <div class="home-container">
-    <ion-card class="fade-in">
+    <!-- Welcome Card -->
+    <ion-card class="fade-in welcome-card">
       <div class="logo-container">
         <ion-icon name="sunny" class="sun-logo"></ion-icon>
       </div>
@@ -32,9 +33,41 @@
       </ion-card-header>
       
       <ion-card-content class="ion-text-center">
-        <p>Welcome dude</p>
-        <p>checkout the folders of cars 👇</p>
-        
+        <p class="welcome-text">Welcome to your personal car collection!</p>
+        <p class="welcome-subtitle">Explore amazing cars, videos, and more</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Featured Cars Card -->
+    <ion-card class="fade-in featured-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="star"></ion-icon> Featured Cars
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="featured-cars">
+          <div class="featured-car" *ngFor="let i of [1, 2, 3]">
+            <div class="car-image-container">
+              <img src="assets/car{{i}}.jpg" alt="Featured Car {{i}}" class="car-image" 
+                   onerror="this.src='https://ionicframework.com/docs/img/demos/card-media.png'">
+            </div>
+            <div class="car-name">Awesome Car {{i}}</div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Quick Actions Card -->
+    <ion-card class="fade-in actions-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="flash"></ion-icon> Quick Actions
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
         <div class="button-container">
           <ion-button expand="block" (click)="openFolders()" class="slide-up">
             <ion-icon slot="start" name="folder-open"></ion-icon>
@@ -60,6 +93,32 @@
             <ion-icon slot="start" name="log-out"></ion-icon>
             Logout
           </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Stats Card -->
+    <ion-card class="fade-in stats-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="analytics"></ion-icon> Collection Stats
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-value">{{ carCount }}</div>
+            <div class="stat-label">Cars</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ videoCount }}</div>
+            <div class="stat-label">Videos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ folderCount }}</div>
+            <div class="stat-label">Folders</div>
+          </div>
         </div>
       </ion-card-content>
     </ion-card>
