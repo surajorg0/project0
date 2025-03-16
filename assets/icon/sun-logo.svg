@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="256" cy="256" r="150" fill="#FFC107" />
+  <g>
+    <!-- Sun rays -->
+    <path d="M256 56V106" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M256 406V456" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M126 126L159 159" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M353 353L386 386" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M56 256H106" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M406 256H456" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M126 386L159 353" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+    <path d="M353 159L386 126" stroke="#FFC107" stroke-width="24" stroke-linecap="round" />
+  </g>
+  <!-- Inner circle with gradient -->
+  <circle cx="256" cy="256" r="100" fill="url(#paint0_radial)" />
+  
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(226 226) rotate(45) scale(150)">
+      <stop offset="0" stop-color="#FFEB3B" />
+      <stop offset="1" stop-color="#FF9800" />
+    </radialGradient>
+  </defs>
+</svg> 
