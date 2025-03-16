@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="100" fill="#E0E0E0"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="85" r="40" fill="#9370DB"/>
+  
+  <!-- Body -->
+  <path d="M50 180C50 140 150 140 150 180" fill="#9370DB"/>
+  
+  <!-- Sun rays around the avatar -->
+  <g stroke="#FFC107" stroke-width="4" stroke-linecap="round">
+    <path d="M100 20V30" />
+    <path d="M100 170V180" />
+    <path d="M30 100H40" />
+    <path d="M160 100H170" />
+    <path d="M40 40L50 50" />
+    <path d="M150 150L160 160" />
+    <path d="M40 160L50 150" />
+    <path d="M150 50L160 40" />
+  </g>
+</svg> 

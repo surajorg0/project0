@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Suraj</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="background-container">
+    <div class="star-dots"></div>
+  </div>
+  
+  <div class="login-container">
+    <ion-card>
+      <div class="logo-container">
+        <ion-icon name="sunny" class="sun-logo"></ion-icon>
+      </div>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Welcome to Suraj</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div *ngIf="!showOtpInput">
+          <ion-item>
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input type="tel" [(ngModel)]="phoneNumber" placeholder="Enter your phone number"></ion-input>
+          </ion-item>
+          
+          <ion-button expand="block" (click)="sendOtp()" class="ion-margin-top">
+            <ion-icon name="call" slot="start"></ion-icon>
+            Send OTP
+          </ion-button>
+        </div>
+        
+        <div *ngIf="showOtpInput" class="otp-container">
+          <ion-item>
+            <ion-label position="floating">OTP</ion-label>
+            <ion-input type="text" [(ngModel)]="otp" placeholder="Enter the OTP"></ion-input>
+          </ion-item>
+          
+          <div class="ion-text-center ion-margin-top">
+            <ion-text color="medium">For this demo, use "12345" as the OTP</ion-text>
+          </div>
+          
+          <ion-button expand="block" (click)="verifyOtp()" class="ion-margin-top">
+            <ion-icon name="lockClosed" slot="start"></ion-icon>
+            Verify OTP
+          </ion-button>
+        </div>
+        
+        <div *ngIf="fingerprintAvailable" class="ion-margin-top ion-text-center">
+          <ion-text color="medium">or</ion-text>
+          <ion-button expand="block" (click)="loginWithFingerprint()" class="ion-margin-top">
+            <ion-icon name="fingerPrint" slot="start"></ion-icon>
+            Login with Fingerprint
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

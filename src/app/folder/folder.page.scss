@@ -1,0 +1,63 @@
+ion-content {
+  --background: linear-gradient(135deg, #9370DB, #6A5ACD);
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+}
+
+ion-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 16px;
+}
+
+ion-card-title {
+  color: #6A5ACD;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  --border-color: rgba(106, 90, 205, 0.3);
+  
+  h2 {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  p {
+    color: #666;
+  }
+}
+
+ion-button {
+  --background: #6A5ACD;
+  --background-hover: #9370DB;
+  margin-top: 16px;
+}

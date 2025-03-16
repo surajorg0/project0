@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="background-container">
+    <div class="star-dots"></div>
+  </div>
+
+  <div class="profile-container">
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <div class="logo-container">
+          <ion-icon name="sunny" class="sun-logo"></ion-icon>
+        </div>
+        <ion-card-title class="ion-text-center">Your Suraj Profile</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="profile-image-container">
+          <ion-avatar class="profile-avatar">
+            <ion-img 
+              [src]="profileImage || 'assets/default-avatar.png'" 
+              class="profile-image"
+              (error)="profileImage = 'assets/default-avatar.png'"
+            ></ion-img>
+          </ion-avatar>
+          
+          <ion-button 
+            (click)="uploadProfilePicture()" 
+            color="secondary" 
+            shape="round" 
+            size="small" 
+            class="upload-button"
+          >
+            <ion-icon name="camera" slot="start"></ion-icon>
+            Upload Photo
+          </ion-button>
+        </div>
+        
+        <div class="form-container">
+          <ion-item>
+            <ion-label position="floating">Your Name</ion-label>
+            <ion-input 
+              [(ngModel)]="userName" 
+              placeholder="Enter your name"
+              type="text"
+              required
+            ></ion-input>
+          </ion-item>
+          
+          <div class="emoji-preview">
+            <p>Your greeting emoji: <span class="emoji">{{ currentEmoji }}</span></p>
+            <p class="emoji-note">Emoji changes randomly each time you open the app</p>
+          </div>
+          
+          <ion-button 
+            expand="block" 
+            (click)="saveProfile()" 
+            class="save-button"
+          >
+            <ion-icon name="save" slot="start"></ion-icon>
+            Save Profile
+          </ion-button>
+          
+          <ion-button 
+            expand="block" 
+            (click)="goToHome()" 
+            color="tertiary"
+            class="home-button"
+          >
+            <ion-icon name="sunny" slot="start"></ion-icon>
+            Back to Home
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

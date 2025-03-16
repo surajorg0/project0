@@ -1,0 +1,98 @@
+ion-content {
+  --background: linear-gradient(135deg, #9370DB, #6A5ACD);
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+ion-card {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+ion-card-title {
+  color: #6A5ACD;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ion-button {
+  --background: #6A5ACD;
+  --background-hover: #9370DB;
+  margin-top: 20px;
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: #6A5ACD;
+}
+
+ion-label {
+  color: #6A5ACD !important;
+}
+
+ion-input {
+  --color: #333;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.sun-logo {
+  font-size: 80px;
+  color: #FFA500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  ion-card {
+    width: 60%;
+  }
+}
