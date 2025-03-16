@@ -15,13 +15,13 @@
         <ion-icon name="sunny" class="sun-logo"></ion-icon>
       </div>
       <ion-card-header>
-        <ion-card-title class="ion-text-center">Welcome to Suraj</ion-card-title>
+        <ion-card-title class="ion-text-center">Welcome to my app </ion-card-title>
       </ion-card-header>
       
       <ion-card-content>
         <div *ngIf="!showOtpInput">
           <ion-item>
-            <ion-label position="floating">Phone Number</ion-label>
+            <ion-label position="floating">Phone Number</ion-label> <br>
             <ion-input type="tel" [(ngModel)]="phoneNumber" placeholder="Enter your phone number"></ion-input>
           </ion-item>
           
@@ -33,7 +33,7 @@
         
         <div *ngIf="showOtpInput" class="otp-container">
           <ion-item>
-            <ion-label position="floating">OTP</ion-label>
+            <ion-label position="floating">OTP</ion-label> <br>
             <ion-input type="text" [(ngModel)]="otp" placeholder="Enter the OTP"></ion-input>
           </ion-item>
           

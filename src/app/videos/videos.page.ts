@@ -70,8 +70,8 @@ export class VideosPage implements OnInit, OnDestroy {
       id: 1,
       title: 'Ferrari SF90 Stradale - Supercar Review',
       description: 'An in-depth look at the Ferrari SF90 Stradale hybrid supercar.',
-      youtubeId: 'mUHDYlJHaOQ',
-      thumbnail: 'https://img.youtube.com/vi/mUHDYlJHaOQ/hqdefault.jpg',
+      youtubeId: 'k1bB_mU4wq0',
+      thumbnail: 'https://img.youtube.com/vi/k1bB_mU4wq0/hqdefault.jpg',
       isPlaying: false
     },
     {
@@ -79,7 +79,7 @@ export class VideosPage implements OnInit, OnDestroy {
       title: 'Lamborghini Aventador SVJ - Track Test',
       description: 'Testing the Lamborghini Aventador SVJ on the Nürburgring.',
       youtubeId: 'jdcV2kI-8YM',
-      thumbnail: 'https://img.youtube.com/vi/jdcV2kI-8YM/hqdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/ZImYRu7hli4/hqdefault.jpg',
       isPlaying: false
     },
     {
@@ -94,24 +94,24 @@ export class VideosPage implements OnInit, OnDestroy {
       id: 4,
       title: 'Porsche 911 GT3 RS - Review',
       description: 'A comprehensive review of the track-focused Porsche 911 GT3 RS.',
-      youtubeId: 'ls0ufiJWZmM',
-      thumbnail: 'https://img.youtube.com/vi/ls0ufiJWZmM/hqdefault.jpg',
+      youtubeId: 'q5T-v5lYnck',
+      thumbnail: 'https://img.youtube.com/vi/q5T-v5lYnck/hqdefault.jpg',
       isPlaying: false
     },
     {
       id: 5,
       title: 'Tesla Model S Plaid - Acceleration Test',
       description: 'Testing the incredible acceleration of the Tesla Model S Plaid.',
-      youtubeId: 'j4gO47n0BnE',
-      thumbnail: 'https://img.youtube.com/vi/j4gO47n0BnE/hqdefault.jpg',
+      youtubeId: 'i9Mq9GMi0QA',
+      thumbnail: 'https://img.youtube.com/vi/i9Mq9GMi0QA/hqdefault.jpg',
       isPlaying: false
     },
     {
       id: 6,
       title: 'Classic Mustang Restoration',
       description: 'Complete restoration of a 1967 Ford Mustang Fastback.',
-      youtubeId: 'C1ey-4Z5Qrc',
-      thumbnail: 'https://img.youtube.com/vi/C1ey-4Z5Qrc/hqdefault.jpg',
+      youtubeId: '_44-iZtLhnI',
+      thumbnail: 'https://img.youtube.com/vi/_44-iZtLhnI/hqdefault.jpg',
       isPlaying: false
     }
   ];

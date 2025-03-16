@@ -58,28 +58,28 @@ export class FolderPage implements OnInit, OnDestroy {
       id: 1, 
       name: 'Sports Cars', 
       imageCount: 5,
-      thumbnail: 'https://source.unsplash.com/random/100x100/?sports-car',
+      thumbnail: 'https://img.freepik.com/premium-vector/sport-car-logo-template-premium-vector_555057-160.jpg?semt=ais_hybrid',
       description: 'High-performance sports cars collection'
     },
     { 
       id: 2, 
       name: 'Vintage Cars', 
       imageCount: 8,
-      thumbnail: 'https://source.unsplash.com/random/100x100/?vintage-car',
+      thumbnail: 'https://img.freepik.com/premium-vector/vintage-classic-car-logo_573604-355.jpg',
       description: 'Classic vintage automobiles from the past'
     },
     { 
       id: 3, 
       name: 'Luxury Cars', 
       imageCount: 7,
-      thumbnail: 'https://source.unsplash.com/random/100x100/?luxury-car',
+      thumbnail: 'https://images-platform.99static.com/XF6ZWRAmIis_Dhh005n4dRlEppI=/98x70:879x851/500x500/top/smart/99designs-contests-attachments/129/129949/attachment_129949202',
       description: 'Premium luxury vehicles'
     },
     { 
       id: 4, 
       name: 'Electric Cars', 
       imageCount: 6,
-      thumbnail: 'https://source.unsplash.com/random/100x100/?electric-car',
+      thumbnail: 'https://i.ytimg.com/vi/CHsIsCVHXZo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB5oyzi9Rx8xPmLsesDbjnfzl7O8A',
       description: 'Modern electric vehicles'
     }
   ];

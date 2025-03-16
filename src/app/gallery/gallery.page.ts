@@ -96,7 +96,7 @@ export class GalleryPage implements OnInit, OnDestroy {
       },
       {
         id: 5,
-        url: 'https://images.unsplash.com/photo-1633509817627-5a29634475af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80',
+        url: 'https://www.shutterstock.com/image-photo/monte-carlo-monaco-may-30th-600nw-2499847687.jpg',
         title: 'Bugatti Chiron',
         description: 'The Bugatti Chiron is a mid-engine two-seater sports car developed and manufactured by Bugatti Automobiles S.A.S.',
         liked: false
@@ -112,7 +112,7 @@ export class GalleryPage implements OnInit, OnDestroy {
       },
       {
         id: 7,
-        url: 'https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80',
+        url: 'https://media.gettyimages.com/id/1323643792/photo/chevrolet-corvette-sting-ray-c2.jpg?s=612x612&w=0&k=20&c=WJDhDmKzn75KH-EyuNzmS7UkwHeHDnCG3Sbow3SPzSI=',
         title: 'Vintage Chevrolet Corvette',
         description: 'The Chevrolet Corvette, colloquially known as the Vette, is a two-door, two-passenger sports car manufactured and marketed by Chevrolet.',
         liked: false
